@@ -1,0 +1,62 @@
+// <div class='photo-card'>
+//     <img src='{{webformatURL}}' alt='' />
+//     <div class='stats'>
+//       <p class='stats-item'>
+//         <i class='material-icons'>thumb_up</i>
+//         {{likes}}
+//       </p>
+//       <p class='stats-item'>
+//         <i class='material-icons'>visibility</i>
+//         {{views}}
+//       </p>
+//       <p class='stats-item'>
+//         <i class='material-icons'>comment</i>
+//         {{comments}}
+//       </p>
+//       <p class='stats-item'>
+//         <i class='material-icons'>cloud_download</i>
+//         {{downloads}}
+//       </p>
+//     </div>
+//   </div>
+
+.search-form input {
+  font-size: 18px;
+  display: block;
+  width: 200px;
+  margin: auto;
+  margin-left: auto;
+}
+
+.gallery {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.photo-card {
+  width: 30%;
+}
+.photo-card img {
+  display: block;
+  width: 100%;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+}
+
+.stats-item {
+  display: flex;
+  align-items: center;
+}
+
+.stats-item:not(:last-child) {
+  margin-right: 10px;
+}
