@@ -5,7 +5,7 @@ import * as basicLightbox from 'basiclightbox';
 
 import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css';
-import { success, info } from '@pnotify/core';
+import { success, info, error } from '@pnotify/core';
 
 const gallery = document.querySelector('.gallery');
 const input = document.querySelector('.search-form input');
@@ -33,11 +33,20 @@ const fetchImages = async (currentInput, currentPage, inputPerPage) => {
       return res.json();
     })
     .then(data => {
-      if (!data) return false;
+      if (data.total === 0) {
+        error({ text: `Bad request. No one images found!`, delay: 2000 });
+        return false;
+      }
       gallery.insertAdjacentHTML('beforeend', cardTemplates(data.hits));
-      success({ text: `${data.total} items`, delay: 2000 });
-      if (data.hits.length < inputPerPage) return false;
-      console.log(data);
+
+      if (data.total !== successAlert && data.total !== 0) {
+        success({ text: `${data.total} images found.`, delay: 2000 });
+        successAlert = data.total;
+      }
+      if (data.hits.length < inputPerPage) {
+        info({ text: `No more images found(${data.total}).`, delay: 2000 });
+        return false;
+      }
 
       setTimeout(() => {
         gallery.children[(currentPage - 1) * inputPerPage].scrollIntoView({
