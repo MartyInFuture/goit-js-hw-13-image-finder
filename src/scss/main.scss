@@ -1,30 +1,10 @@
-// <div class='photo-card'>
-//     <img src='{{webformatURL}}' alt='' />
-//     <div class='stats'>
-//       <p class='stats-item'>
-//         <i class='material-icons'>thumb_up</i>
-//         {{likes}}
-//       </p>
-//       <p class='stats-item'>
-//         <i class='material-icons'>visibility</i>
-//         {{views}}
-//       </p>
-//       <p class='stats-item'>
-//         <i class='material-icons'>comment</i>
-//         {{comments}}
-//       </p>
-//       <p class='stats-item'>
-//         <i class='material-icons'>cloud_download</i>
-//         {{downloads}}
-//       </p>
-//     </div>
-//   </div>
-
+@import './ligthbox';
 .search-form input {
+  margin-bottom: 30px;
   font-size: 18px;
   display: block;
   width: 200px;
-  margin: auto;
+  margin-right: auto;
   margin-left: auto;
 }
 
@@ -32,15 +12,20 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 1440px;
 
-  margin-top: 25px;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  margin-top: -30px;
+  margin-left: -30px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .photo-card {
-  width: 30%;
+  width: 450px;
+  margin-top: 30px;
+  margin-left: 30px;
 }
 .photo-card img {
   display: block;
