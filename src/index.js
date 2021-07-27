@@ -47,14 +47,20 @@ const fetchImages = async (currentInput, currentPage, inputPerPage) => {
         info({ text: `No more images found(${data.total}).`, delay: 2000 });
         return false;
       }
-
-      setTimeout(() => {
-        gallery.children[(currentPage - 1) * inputPerPage].scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-        observer.observe(gallery.lastElementChild);
-      }, 500);
+      const itemsArr = gallery.querySelectorAll('.photo-card img');
+      let iterator = 0;
+      itemsArr.forEach(item => {
+        item.onload = () => {
+          iterator += 1;
+          if (iterator === inputPerPage) {
+            gallery.children[(currentPage - 1) * inputPerPage].scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+            observer.observe(gallery.lastElementChild);
+          }
+        };
+      });
     })
     .catch(error => {
       console.log(error);
